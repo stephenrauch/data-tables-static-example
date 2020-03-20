@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>{{ page_title }}</title>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+	<style type="text/css" class="init">
+
+	</style>
+	<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" class="init">
+
+        $(document).ready(function() {
+            $('#{{ table_id }}').DataTable();
+            $('#{{ table_id }}').css({visibility: 'visible'});
+        } );
+
+	</script>
+</head>
+
+<body>
+    <div style="width:1000px">
+    <table id="{{ table_id }}" class="display" style="visibility: hidden;width:100%">
+        <thead>
+            <tr>
+            {% for col_name in header %}
+                <th>{{ col_name }}</th>
+            {% endfor %}
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for row in data %}
+            <tr>
+            {% for datum in row %}
+                <td>{{ datum }}</td>
+            {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+
+        <tfoot>
+            <tr>
+            {% for col_name in header %}
+                <th>{{ col_name }}</th>
+            {% endfor %}
+            </tr>
+        </tfoot>
+    </table>
+    </div>
+</body>
+</html>
